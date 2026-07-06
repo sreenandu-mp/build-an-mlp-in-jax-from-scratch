@@ -59,8 +59,24 @@ def one_hot_encode_labels(labels, num_classes):
 
     return one_hot
 
-# Step 7 - init_linear_layer (not yet solved)
-# TODO: implement
+# Step 7 - init_linear_layer
+import jax
+import jax.numpy as jnp
+
+def init_linear_layer(key, in_dim, out_dim, scale=0.1):
+    """Return {'W': (in_dim, out_dim), 'b': (out_dim,)} for one dense layer."""
+    # sample W from a scaled normal and set b to zeros, return as a dict.
+    w = sample_normal_matrix(key, (in_dim, out_dim))
+    w = w*scale
+    
+    b = jnp.zeros((out_dim))
+
+    layers = {
+        "W":w,
+        "b":b
+    }
+
+    return layers
 
 # Step 8 - init_mlp_params (not yet solved)
 # TODO: implement
