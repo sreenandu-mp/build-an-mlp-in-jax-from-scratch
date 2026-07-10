@@ -200,8 +200,17 @@ def loss_fn_of_params(params, x, one_hot_targets):
 
     return loss
 
-# Step 17 - compute_param_grads (not yet solved)
-# TODO: implement
+# Step 17 - compute_param_grads
+import jax
+import jax.numpy as jnp
+
+def compute_param_grads(params, x, one_hot_targets):
+    # TODO: return grad of loss_fn_of_params w.r.t. params using jax.grad
+    grad_fn = jax.grad(loss_fn_of_params)
+
+    grad = grad_fn(params, x, one_hot_targets)
+
+    return grad
 
 # Step 18 - sgd_update_params (not yet solved)
 # TODO: implement
